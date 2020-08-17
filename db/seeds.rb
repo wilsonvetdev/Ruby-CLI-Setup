@@ -1,44 +1,48 @@
-require 'csv'
-require 'pry'
+Bank.destroy_all
+User.destroy_all 
+Userbank.destroy_all
+Bank.reset_pk_sequence
+User.reset_pk_sequence  
+Userbank.reset_pk_sequence
 
 arr_of_arrs = CSV.read("db/banks.csv")
-
 
 arr_of_arrs.shift
 
 converted_array = []
 
 arr_of_arrs.each do |array|
-    converted_array << {:bank_name => array[0], :address => array[1], :city => array[2], :zipcode => array[3], :county => array[4]}
+    converted_array << {:bank_name => array[0], :street_address => array[1], :city => array[2], :zipcode => array[3]}
 end
 
 converted_array.first
 # returns a hash, can probably use for mass creating with enumerator.
 # {:bank_name=>"Abacus Federal Savings Bank", :address=>"5518 8th Avenue", :city=>"Brooklyn", :zipcode=>"11220", :county=>"Kings"}
 
-result = []
 converted_array.each do |hash|
-    result = Bank.create(hash)
+    Bank.create(hash)
 end
+# creates bank instances by iterating through each hash inside converted_array.
 
+eric_kim = User.create(user_name: "erickim")
+sylwia = User.create(user_name: "sylwia")
 
-binding.pry 
-0
+Userbank.create(user_id: eric_kim.id, bank_id: Bank.all.sample.id, user_fav: false)
+Userbank.create(user_id: eric_kim.id, bank_id: Bank.all.sample.id, user_fav: true)
+Userbank.create(user_id: sylwia.id, bank_id: Bank.all.sample.id, user_fav: true)
+Userbank.create(user_id: sylwia.id, bank_id: Bank.all.sample.id, user_fav: false)
+Userbank.create(user_id: sylwia.id, bank_id: Bank.all.sample.id, user_fav: false)
 
-
-
-
-
-
-
-
-
-
-
+# to update atm_fee, remember to originate the update from Bank.
 
 
 
-#Plant.destroy_all
+
+
+
+
+
+# Plant.destroy_all
 # Person.destroy_all
 # PlantParenthood.destroy_all
 # Plant.reset_pk_sequence
@@ -47,12 +51,6 @@ binding.pry
 
 ########### different ways to write your seeds ############
 
-
-
-
-
-
-
 # 1: save everything to variables (makes it easy to connect models, best for when you want to be intentional about your seeds)
 # basil = Plant.create(name: "basil the herb", bought: 20200610, color: "green")
 # sylwia = Person.create(name: "Sylwia", free_time: "none", age: 30)
@@ -60,12 +58,6 @@ binding.pry
 
 # 2. Mass create -- in order to connect them later IN SEEDS (not through the app) you'll need to find their id
 ## a. by passing an array of hashes:
-
-
-
-
-
-
 
 # Plant.create([
 #     {name: "Corn Tree", bought: 20170203, color: "green"},
@@ -81,11 +73,6 @@ binding.pry
 #     {name: "Cactus", bought: 20200517, color: "green"}]
 
 # plants.each{|hash| Plant.create(hash)}
-
-
-
-
-
 
 # # 3. Use Faker and mass create
 # ## step 1: write a method that creates a person
@@ -124,5 +111,4 @@ binding.pry
 
 # Plant.update(category_id: indoor.id)
 
-
-#puts "🔥 🔥 🔥 🔥 "
+puts "seeds loaded 🔥 🔥 🔥 🔥 "
