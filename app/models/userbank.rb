@@ -1,4 +1,4 @@
 class Userbank < ActiveRecord::Base
-  has_many :users
-  has_many :banks
+  belongs_to :user
+  belongs_to :bank
 end
