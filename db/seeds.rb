@@ -1,4 +1,8 @@
+require 'csv'
+require 'pry'
+
 arr_of_arrs = CSV.read("db/banks.csv")
+
 
 arr_of_arrs.shift
 
@@ -12,7 +16,14 @@ converted_array.first
 # returns a hash, can probably use for mass creating with enumerator.
 # {:bank_name=>"Abacus Federal Savings Bank", :address=>"5518 8th Avenue", :city=>"Brooklyn", :zipcode=>"11220", :county=>"Kings"}
 
+result = []
+converted_array.each do |hash|
+    result = Bank.create(hash)
+end
 
+
+binding.pry 
+0
 
 
 
