@@ -23,9 +23,9 @@ class ATMlocator
     )
 
     if user_choice == "Logging-in"
-      # log-in method def user_logging_in
       puts "-----------------------------------------"
       puts "Log in you shall!"
+      User.user_logging_in
     elsif user_choice == "Register"
       puts "-----------------------------------------"
       puts "Register you shall!"

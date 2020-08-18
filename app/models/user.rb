@@ -2,6 +2,13 @@ class User < ActiveRecord::Base
     has_many :userbanks
     has_many :banks, through: :userbanks
 
+    def self.user_logging_in
+        prompt =  TTY::Prompt.new
+        user_name = prompt.ask("Please input your username -->")
+        found_user = User.find_by(user_name: user_name)
+        puts "Hello #{found_user.user_name}, you are logged in."
+    end
+
     def self.register_user
         prompt =  TTY::Prompt.new
         user_name = prompt.ask("Please input your username -->")
