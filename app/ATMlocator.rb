@@ -44,7 +44,7 @@ class ATMlocator
       menu.choice "Add/Update favorite bank location(s)", -> { puts "--method here to update userbank row 'user_fav attribute'--"}
       menu.choice "Delete a bank from your list", -> { puts "--Userbank find associated row and .destroy here to disassociate--" }
       menu.choice "Delete your user account", -> { puts "--Delete user instance and userbank rows associated with user here--" }
-      menu.choice "Not what you are looking for? Click here for more.", --> { puts "--sub_menu here--"}
+      menu.choice "Not what you are looking for? Click here for more.", -> { puts "--sub_menu here--"}
     end
   end
 
