@@ -1,4 +1,21 @@
 class User < ActiveRecord::Base
     has_many :userbanks
     has_many :banks, through: :userbanks
+
+    def self.register_user
+        prompt =  TTY::Prompt.new
+        user_name = prompt.ask("Please input your username -->")
+
+        sleep 1
+
+        puts "Your user id is unique to you and it's --#{User.create_unique_id}--."
+        puts "Please commit it to your memory."
+
+        
+    end
+
+    def self.create_unique_id
+        rand.to_s[2..7]
+    end
+
 end

@@ -10,7 +10,7 @@ class ATMlocator
 
   def welcome
     puts "-----------------------------------------"
-    puts "Welcome to our ATM locator app!"
+    puts "Hi Friend, Welcome to our ATM locator app!"
   end
 
   def login_or_register
@@ -23,13 +23,13 @@ class ATMlocator
     )
 
     if user_choice == "Logging-in"
-      # log-in logic here - def user_logging_in
+      # log-in method def user_logging_in
       puts "-----------------------------------------"
       puts "Log in you shall!"
     elsif user_choice == "Register"
-      # register logic here - def register_user
       puts "-----------------------------------------"
       puts "Register you shall!"
+      User.register_user
     end
   end
 
