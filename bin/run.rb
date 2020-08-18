@@ -1,6 +1,6 @@
 require_relative '../config/environment'
 
-# app = nameOfYourApp.new
-# app.run
+app = ATMlocator.new
+app.run
 
 
