@@ -5,8 +5,12 @@ class User < ActiveRecord::Base
     def self.user_logging_in
         prompt =  TTY::Prompt.new
         user_name = prompt.ask("Please input your username -->")
-        found_user = User.find_by(user_name: user_name)
-        puts "Hello #{found_user.user_name}, you are logged in."
+        found_user = User.find_by(user_name: user_name) # change to find_by "unique id" later 
+        if found_user 
+            found_user
+        else
+            puts "Sorry, you aren't registered with us yet."
+        end
     end
 
     def self.register_user
@@ -15,6 +19,7 @@ class User < ActiveRecord::Base
 
         sleep 1
 
+        puts "You are registered!"
         puts "Your user id is unique to you and it's --#{User.create_unique_id}--."
         puts "Please commit it to your memory."
 
