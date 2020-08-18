@@ -30,5 +30,5 @@ class User < ActiveRecord::Base
     def self.create_unique_id
         rand.to_s[2..7]
     end
-
+    
 end
