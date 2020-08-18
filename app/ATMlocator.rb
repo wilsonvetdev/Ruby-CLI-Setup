@@ -40,7 +40,8 @@ class ATMlocator
     self.prompt.select("What would you like to accomplish today?") do |menu|
       menu.choice "Find banks by zipcode", -> { puts "--find banks by zipcode method here--" }
       menu.choice "Add your bank to a list", -> { puts "--Userbank.create here to associate user and bank--" }
-      menu.choice "Delete a bank from from your list", -> { puts "--Userbank find associated row and .destroy here to disassociate--" }
+      menu.choice "Add/Update favorite bank location(s)", -> { puts "--method here to update userbank row 'user_fav attribute' --"}
+      menu.choice "Delete a bank from your list", -> { puts "--Userbank find associated row and .destroy here to disassociate--" }
       menu.choice "Delete your user account", -> { puts "--Delete user instance and userbank rows associated with user here--" }
     end
   end
