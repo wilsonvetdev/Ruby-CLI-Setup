@@ -6,6 +6,7 @@ User.reset_pk_sequence
 Userbank.reset_pk_sequence
 
 arr_of_arrs = CSV.read("db/banks.csv")
+# https://data.ny.gov/Government-Finance/Bank-Owned-ATM-Locations-in-New-York-State/ndex-ad5r
 
 arr_of_arrs.shift
 

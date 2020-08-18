@@ -4,6 +4,7 @@ gem "activerecord", "~> 5.2"
 gem "sinatra-activerecord"
 gem "rake"
 gem 'activerecord-reset-pk-sequence', '~> 0.2.1'
+gem 'tty-prompt'
 
 
 gem "require_all"
