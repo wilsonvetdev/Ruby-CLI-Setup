@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
         puts "Your user id is unique to you and it's --#{User.create_unique_id}--."
         puts "Please commit it to your memory."
 
-        
+        User.create(user_name: user_name)
+        # thinking about adding another column to users table just for fun, assigning a 6 digit "unique_id" to each user.
     end
 
     def self.create_unique_id
